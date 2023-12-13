@@ -4,6 +4,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\JenisProdukController;
 use App\Http\Controllers\KartuController;
 use App\Http\Controllers\PagenotController;
+use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\ProdukController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +23,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::prefix('admin')->group(function(){
 Route::get('dashboard', [DashboardController::class, 'index']);
 
 //contoh pemanggilan secara satu persatu function menggunakan get,put, update, delete
@@ -31,3 +34,9 @@ Route::resource('kartu', KartuController::class);
 
 //memanggil fungsi satu persatu
 Route::get('/jenis_produk', [JenisProdukController::class, 'index']);
+
+Route::get('/produk', [ProdukController::class, 'index']);
+
+Route::resource('pelanggan', PelangganController::class);
+
+});
